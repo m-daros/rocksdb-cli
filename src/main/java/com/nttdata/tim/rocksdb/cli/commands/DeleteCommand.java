@@ -1,11 +1,12 @@
 package com.nttdata.tim.rocksdb.cli.commands;
 
 import com.nttdata.tim.rocksdb.cli.repository.KVRepository;
-import com.nttdata.tim.rocksdb.cli.repository.RocksDBReadWriteRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+@Slf4j
 @ShellComponent
 public class DeleteCommand {
 
@@ -15,7 +16,7 @@ public class DeleteCommand {
 	@ShellMethod ( value = "Get value by key.", key = "delete" )
 	public void delete ( String key ) {
 
-		System.out.println ( "delete value by key: " + key );
+		log.info ( "delete value by key: " + key );
 
 		rocksDbRepository.delete ( key );
 

@@ -40,13 +40,18 @@ public class RocksDBReadMultiRepository implements KVRepository<String, Object> 
 
 				try {
 
+					log.info ( "Opening RocksDB instance using folder: {}", dbFolderPath );
+
 					return RocksDB.open ( options, dbFolderPath );
 				}
 				catch ( Exception e ) {
 
-					throw new RuntimeException ( e );
+					log.error ( "Unable to open RocksDB instance using folder: {}", dbFolderPath );
+
+					return null;
 				}
 			} )
+			.filter ( Objects::nonNull )
 			.collect ( Collectors.toList () );
 
 		log.info ( "RocksDB RocksDBReadMultiRepository initialized" );
@@ -68,6 +73,8 @@ public class RocksDBReadMultiRepository implements KVRepository<String, Object> 
 					return db.get ( key.getBytes () );
 				}
 				catch ( RocksDBException e ) {
+
+					log.error ( "Error retrieving the entry with key: {}, cause: {}, message: {}", key, e.getCause (), e.getMessage () );
 
 					return null;
 				}

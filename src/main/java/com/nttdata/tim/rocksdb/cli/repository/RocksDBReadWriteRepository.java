@@ -39,11 +39,13 @@ public class RocksDBReadWriteRepository implements KVRepository<String, Object> 
 			Files.createDirectories ( baseDir.getParentFile ().toPath () );
 			Files.createDirectories ( baseDir.getAbsoluteFile ().toPath () );
 			db = RocksDB.open ( options, baseDir.getAbsolutePath () );
-			log.info ( "RocksDB RocksDBReadWriteRepository initialized" );
+			log.info ( "RocksDB RocksDBReadWriteRepository initialized using folder: {}", baseDir.getAbsolutePath () );
 		}
 		catch ( Exception e ) {
 
 			log.error ( "Error initializng RocksDB. Exception: '{}', message: '{}'", e.getCause (), e.getMessage (), e );
+
+			throw new RuntimeException ( String.format ( "Error initialize RocksDB. Exception: '%s', message: '%s'", e.getCause (), e.getMessage () ) );
 		}
 	}
 
