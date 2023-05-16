@@ -15,7 +15,8 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
-public class RocksDBReadWriteRepository implements KVRepository<String, Object> {
+public class RocksDBReadWriteRepository implements
+		KVReadWriteRepository<String, Object> {
 
 	@Value ( "${rocksdb.folder.path}" )
 	private String dbFolderPath;

@@ -2,7 +2,7 @@ package com.nttdata.tim.rocksdb.cli.repository;
 
 import java.util.Optional;
 
-public interface KVRepository<K, V> {
+public interface KVReadWriteRepository<K, V> {
 
 	boolean put ( K key, V value );
 
