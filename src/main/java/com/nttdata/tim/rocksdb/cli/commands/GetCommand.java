@@ -13,13 +13,11 @@ public class GetCommand {
 	@Autowired
 	private KVRepository<String, Object> rocksDbRepository;
 
-	@ShellMethod ( value = "Get value by key.", key = "get" )
+	@ShellMethod ( value = "Get value by key. Example: get key", key = "get" )
 	public void get ( String key ) {
 
-		log.info ( "get value by key: " + key );
+		log.debug ( "get value by key: " + key );
 
 		rocksDbRepository.get ( key );
-
-		// TODO Error handling
 	}
 }

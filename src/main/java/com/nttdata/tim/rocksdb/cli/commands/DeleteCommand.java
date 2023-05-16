@@ -13,13 +13,11 @@ public class DeleteCommand {
 	@Autowired
 	private KVRepository<String, Object> rocksDbRepository;
 
-	@ShellMethod ( value = "Get value by key.", key = "delete" )
+	@ShellMethod ( value = "Delete value by key. example: delete key", key = "delete" )
 	public void delete ( String key ) {
 
-		log.info ( "delete value by key: " + key );
+		log.debug ( "delete value by key: " + key );
 
 		rocksDbRepository.delete ( key );
-
-		// TODO Error handling
 	}
 }

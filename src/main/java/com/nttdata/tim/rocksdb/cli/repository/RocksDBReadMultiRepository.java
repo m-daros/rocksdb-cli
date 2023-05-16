@@ -91,6 +91,8 @@ public class RocksDBReadMultiRepository implements KVRepository<String, Object> 
 		}
 		else {
 
+			log.info ( "finding key '{}' returns no values", key );
+
 			return Optional.empty ();
 		}
 	}

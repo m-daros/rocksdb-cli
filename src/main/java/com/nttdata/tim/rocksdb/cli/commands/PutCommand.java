@@ -13,13 +13,11 @@ public class PutCommand {
 	@Autowired
 	private KVRepository<String, Object> rocksDbRepository;
 
-	@ShellMethod ( value = "Put value using key.", key = "put" )
+	@ShellMethod ( value = "Put value providing key and value. Example: put key value", key = "put" )
 	public void put ( String key, Object value ) {
 
-		log.info ( "put value: " + value + " using key: " + key );
+		log.debug ( "put value: " + value + " using key: " + key );
 
 		rocksDbRepository.put ( key, value );
-
-		// TODO Error handling
 	}
 }
