@@ -1,3 +1,17 @@
+## Overview
+
+**rocksdb-cli** is a CLI that enables simple interactions on an underlying RocksDB
+
+## Features
+- Get the value (if it exists) associated to a key
+- Create / update a value given the key
+- Delete a value given the key
+
+## Requirements
+
+- Java 17+
+- Maven
+
 ## Build
 
 
@@ -40,10 +54,6 @@ In this case the application.properties file can be: <br/><br/>
 db.multi.folder.read=true
 rocksdb.folder.paths=/ny-folder1/my-folder2/rocksdb-folder1,/ny-folder1/my-folder2/rocksdb-folder2,/ny-folder1/my-folder2/rocksdb-folder3
 `
-## Requirements
-
-- Java 17+
-- Maven
 
 ## Run
 `java -jar rocksdb-cli-1.0.0.jar`
