@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.nttdata.tim</groupId>
 	<artifactId>rocksdb-cli</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>rocksdb-cli</name>
 	<description>RocksDB CLI with Spring Boot</description>
 	<properties>

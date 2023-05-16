@@ -6,6 +6,7 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.SerializationUtils;
 
@@ -14,9 +15,9 @@ import java.nio.file.Files;
 import java.util.Optional;
 
 @Slf4j
+@ConditionalOnProperty ( value="db.multi.folder.read", havingValue = "false", matchIfMissing = true )
 @Repository
-public class RocksDBReadWriteRepository implements
-		KVReadWriteRepository<String, Object> {
+public class RocksDBReadWriteRepository implements KVRepository<String, Object> {
 
 	@Value ( "${rocksdb.folder.path}" )
 	private String dbFolderPath;
@@ -38,7 +39,7 @@ public class RocksDBReadWriteRepository implements
 			Files.createDirectories ( baseDir.getParentFile ().toPath () );
 			Files.createDirectories ( baseDir.getAbsoluteFile ().toPath () );
 			db = RocksDB.open ( options, baseDir.getAbsolutePath () );
-			log.info ( "RocksDB initialized" );
+			log.info ( "RocksDB RocksDBReadWriteRepository initialized" );
 		}
 		catch ( Exception e ) {
 

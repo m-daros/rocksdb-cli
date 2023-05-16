@@ -1,5 +1,6 @@
 package com.nttdata.tim.rocksdb.cli.commands;
 
+import com.nttdata.tim.rocksdb.cli.repository.KVRepository;
 import com.nttdata.tim.rocksdb.cli.repository.RocksDBReadWriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
@@ -9,7 +10,7 @@ import org.springframework.shell.standard.ShellMethod;
 public class GetCommand {
 
 	@Autowired
-	private RocksDBReadWriteRepository rocksDbRepository;
+	private KVRepository<String, Object> rocksDbRepository;
 
 	@ShellMethod ( value = "Get value by key.", key = "get" )
 	public void get ( String key ) {
