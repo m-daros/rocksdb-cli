@@ -14,7 +14,7 @@ The RocksDB CLI can be configured using an external **application.properties** f
 The CLI can open / create a RocksDB instance in Read / Write mode.<br/>
 In this mode the CLI can get, put or delete key / values operating on a single RocksDB instance
 
-### How configure the read / write mode
+#### How to configure the read / write mode
 
 This mode can be enabled using the following properties: <br/>
 **rocksdb.folder.path** spevifying the full pathname of the RocksDB folder
@@ -27,6 +27,8 @@ In this case the application.properties file can be: <br/><br/>
 
 In this mode the CLI can open a set of RocksDB folders and perform readonly operations on them.
 In this mode it's possible to get the values associated to a key iterating over the underlying RocksDB instances.
+
+#### How to configure the read only mode
 
 This mode can be enabled using the following properties: <br/>
 **db.multi.folder.read=true** <br/>
